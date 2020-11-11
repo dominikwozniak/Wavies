@@ -1,7 +1,10 @@
 import React  from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 import { playAudio } from '../util/playAudio';
+import { IconButton } from '@material-ui/core';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioRef, currentSong, isPlaying, setIsPlaying }) => {
 
@@ -73,9 +76,15 @@ const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioR
                 <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
             </div>
             <div className="play-control">
-                <FontAwesomeIcon onClick={() => skipTrackHandler('skip-back')} className='skip-back' size='2x' icon={faAngleLeft} />
-                <FontAwesomeIcon onClick={playSongHandler} className='play' size='2x' icon={isPlaying ? faPause : faPlay} />
-                <FontAwesomeIcon onClick={() => skipTrackHandler('skip-forward')} className='skip-forward' size='2x' icon={faAngleRight} />
+                <IconButton onClick={() => skipTrackHandler('skip-back')} className='skip-back'>
+                    <KeyboardArrowLeftIcon fontSize='large' />
+                </IconButton>
+                <IconButton onClick={playSongHandler} className='play' >
+                    {isPlaying ? < PauseIcon style = {{fontSize: 45}} /> : <PlayArrowIcon style={{ fontSize: 45 }}/> }
+                </IconButton>
+                <IconButton onClick={() => skipTrackHandler('skip-forward')} className='ski-forward'>
+                    <KeyboardArrowRightIcon fontSize='large' />
+                </IconButton>
             </div>
         </div>
     );

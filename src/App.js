@@ -5,6 +5,7 @@ import Player from "./components/Player";
 import data from './util';
 import Library from "./components/Library";
 import Nav from './components/Nav';
+import { playAudio } from './util/playAudio';
 
 function App() {
     const [songs, setSongs] = useState(data());
@@ -25,7 +26,8 @@ function App() {
     const songEndHandler = async () => {
         let currentIndex = songs.findIndex(song => song.id === currentSong.id);
         await setCurrentSong(songs[(currentIndex+1) % songs.length]);
-        if (isPlaying) audioRef.current.play();
+        await playAudio(isPlaying, audioRef);
+        return;
     };
 
   return (
