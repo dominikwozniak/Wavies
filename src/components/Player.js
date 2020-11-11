@@ -1,30 +1,9 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 import { playAudio } from '../util/playAudio';
 
 const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioRef, currentSong, isPlaying, setIsPlaying }) => {
-
-    useEffect(() => {
-        const updateActiveSong = async () => {
-            const newSongs = songs.map(s => {
-                if(s.id === currentSong.id) {
-                    return {
-                        ...s,
-                        active: true,
-                    }
-                } else {
-                    return {
-                        ...s,
-                        active: false
-                    }
-                }
-            });
-            await setSongs(newSongs);
-            // await playAudio(isPlaying, audioRef);
-        };
-        updateActiveSong();
-    }, [currentSong]);
 
     const playSongHandler = () => {
         if (isPlaying) {
@@ -52,17 +31,38 @@ const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioR
 
       if (direction === 'skip-forward') {
         await setCurrentSong(songs[(currentIndex+1) % songs.length]);
+        await activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
       }
 
       if (direction === 'skip-back') {
           if ((currentIndex-1) % songs.length === -1) {
               await setCurrentSong(songs[songs.length-1]);
+              await activeLibraryHandler(songs[songs.length-1]);
               await playAudio(isPlaying, audioRef);
               return;
           }
           await setCurrentSong(songs[(currentIndex-1) % songs.length]);
+          await activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
       }
       await playAudio(isPlaying, audioRef);
+    };
+
+    const activeLibraryHandler = async (nextPrev) => {
+        const newSongs = songs.map(s => {
+            if(s.id === nextPrev.id) {
+                return {
+                    ...s,
+                    active: true,
+                }
+            } else {
+                return {
+                    ...s,
+                    active: false
+                }
+            }
+        });
+        await setSongs(newSongs);
+        // await playAudio(isPlaying, audioRef);
     };
 
     return (
