@@ -16,6 +16,30 @@ nav {
       color: #ffffff;
     }
   }
+
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  img {
+    width: 50px;
+  }
+
+  h1 {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.button-active {
+  background: rgb(65, 65, 65);
+  color: #ffffff;
+
+  &:hover {
+    background: transparent;
+    color: #000000;
+  }
 }
 
 @media screen and (max-width: 768px) {
