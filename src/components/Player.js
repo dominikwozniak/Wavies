@@ -5,6 +5,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import VolumePopup from './VolumePopup';
 
 const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioRef, currentSong, isPlaying, setIsPlaying }) => {
 
@@ -74,6 +75,7 @@ const Player = ({ songs, setSongs, setCurrentSong, songInfo, setSongInfo, audioR
                 <p>{getTime(songInfo.currentTime)}</p>
                 <input min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler} type="range"/>
                 <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
+                <VolumePopup audioRef={audioRef} />
             </div>
             <div className="play-control">
                 <IconButton onClick={() => skipTrackHandler('skip-back')} className='skip-back'>

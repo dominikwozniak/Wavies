@@ -29,6 +29,10 @@ function App() {
         await playAudio(isPlaying, audioRef);
     };
 
+    const changeVolumeHandler = async () => {
+        console.log(audioRef)
+        audioRef.current.volume = 0.3;
+    };
 
   return (
     <div className={`App ${libraryStatus ? 'library-active' : ''}`}>
