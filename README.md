@@ -16,6 +16,7 @@ Wavies is music app created with React :musical_note:
 
 ![ss1](./ss/ss1.png)
 ![ss2](./ss/ss2.png)
+![ss3](./ss/ss3.png)
 
 ## Project setup
 
