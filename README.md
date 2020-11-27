@@ -5,6 +5,8 @@
 
 Wavies is music app created with React :musical_note: 
 
+[Preview app](https://wavies.netlify.app/)
+
 ## Technologies
 
 * `ReactJS`
