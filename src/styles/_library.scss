@@ -9,7 +9,7 @@
   overflow: scroll;
   transform: translateX(-100%);
   opacity: 0.3;
-  transition: .5s ease;
+  transition: 0.5s ease;
 
   h2 {
     padding: 1rem;
@@ -21,7 +21,7 @@
   align-items: center;
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 
   img {
     width: 72px;
@@ -29,7 +29,7 @@
   }
 
   &:hover {
-    background-color: rgb(225, 225, 225)
+    background-color: rgb(225, 225, 225);
   }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .selected {
-  background-color: rgb(215, 215, 215)
+  background-color: rgb(215, 215, 215);
 }
 
 .active-library {

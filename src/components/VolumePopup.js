@@ -2,10 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { IconButton } from '@material-ui/core';
 import VolumeUpIcon from '@material-ui/icons/VolumeDown';
-import { Slider } from '@material-ui/core';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 
@@ -18,7 +16,9 @@ const useStyles = makeStyles((theme) => ({
 export default function VolumePopup({ audioRef }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [volume, setVolume] = React.useState(audioRef.current ? audioRef.current.volume * 100 : 100);
+  const [volume, setVolume] = React.useState(
+    audioRef.current ? audioRef.current.volume * 100 : 100
+  );
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,8 +39,12 @@ export default function VolumePopup({ audioRef }) {
 
   return (
     <div>
-      <IconButton aria-describedby={id} variant="contained" onClick={handleClick}>
-        <VolumeUpIcon/>
+      <IconButton
+        aria-describedby={id}
+        variant="contained"
+        onClick={handleClick}
+      >
+        <VolumeUpIcon />
       </IconButton>
       <Popover
         id={id}
@@ -58,7 +62,13 @@ export default function VolumePopup({ audioRef }) {
       >
         <Typography className={classes.typography}>
           <VolumeDown />
-          <input min={0} max={100} value={volume} onChange={dragHandler} type="range"/>
+          <input
+            min={0}
+            max={100}
+            value={volume}
+            onChange={dragHandler}
+            type="range"
+          />
           <VolumeUp />
         </Typography>
       </Popover>
