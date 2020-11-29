@@ -13,6 +13,8 @@ Wavies is music app created with React :musical_note:
 * `MaterialUI`
 * `Hooks`
 * `SCSS`
+* `GraphCMS`
+* `Apollo`
 
 ## Screenshots
 
