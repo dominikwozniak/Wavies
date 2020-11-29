@@ -75,7 +75,6 @@ const Player = ({
       }
     });
     await setSongs(newSongs);
-    // await playAudio(isPlaying, audioRef);
   };
 
   return (
